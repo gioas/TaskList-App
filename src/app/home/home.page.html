@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      TaskList App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="ios list-ios hydrated">
+    <ion-list-header class="ios hydrated">
+      Lista delle task
+    </ion-list-header>
+
+    <ion-item *ngFor="let task of Tasks; let i = index" class="item-label item ios in-list ion-focusable hydrated">
+      <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
+        <h2>{{task.task_name}}</h2>
+        <h3>{{task.task_data}}</h3>
+      </ion-label>
+
+      <div class="item-note" item-end>
+        <button ion-button clear [routerLink]="['/edit-task/', task._id]">
+          <ion-icon name="create" style="zoom:2.0"></ion-icon>
+        </button>
+        <button ion-button clear (click)="deleteTask(task, i)">
+          <ion-icon name="trash" style="zoom:2.0"></ion-icon>
+        </button>
+      </div>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" routerLink="/add-task">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
